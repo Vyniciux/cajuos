@@ -72,6 +72,23 @@ _gallery:
         cmp ax,1
         je .img1
 
+        cmp ax,2
+        je .img2
+
+        cmp ax,3
+        je .img3
+
+        cmp ax,4
+        je .img4
+
+        cmp ax,5
+        je .img5
+
+        cmp ax,6
+        je .img6
+
+        cmp ax,7
+        je .img7
 
         jmp .show
 
