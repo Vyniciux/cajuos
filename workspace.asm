@@ -7,9 +7,7 @@ _mount:   ;Tô criando essa função pra ser o montador da área de trabalho
 
     call _apps
 
-    call _getc
-    
-    jmp _gallery
+    call _callapp
 
     ret
 
@@ -20,8 +18,18 @@ _apps:
     call _img16x16
 
     mov cx, 20
-    mov dx, 380
-    mov si, insta
+    mov dx, 280
+    mov si, icon_gal
+    call _img16x16
+
+    mov cx, 120
+    mov dx, 280
+    mov si, iconnotes
+    call _img16x16
+
+    mov cx, 220
+    mov dx, 280
+    mov si, iconconfig
     call _img16x16
 
     ret
