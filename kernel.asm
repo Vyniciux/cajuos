@@ -5,7 +5,7 @@ jmp 0x0000:start
 %include "video.asm"
 %include "functions.asm"
 %include "workspace.asm"
-
+%include "game.asm"
 %include "gallery.asm"
 
 data:

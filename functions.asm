@@ -7,8 +7,11 @@ _callapp:
 
     call _getc
 
-    cmp al,49
+    cmp al, 49
     je _gallery
+
+    cmp al, 50
+    je _game
 
 
     jmp _callapp

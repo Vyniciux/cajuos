@@ -1,0 +1,209 @@
+_game:
+
+        call _setvideo
+        mov bl, 11
+        call _setbackg
+        call _cartas
+    
+
+
+_cartas:
+
+    call .cartasbaixo
+
+    call .loopc
+
+    .loopc
+
+        call _getc
+
+        cmp al, 48
+        je .carta0V
+
+        cmp al, 49
+        je .carta1V
+
+        cmp al, 50
+        je .carta2V
+
+        cmp al, 51
+        je .carta3V
+
+        cmp al, 52
+        je .carta4V
+
+        cmp al, 53
+        je .carta5V
+
+        cmp al, 54
+        je .carta6V
+
+        cmp al, 55
+        je .carta7V
+
+        cmp al, 56
+        je .carta8V
+
+        cmp al, 57
+        je .carta9V
+
+        cmp al, 99
+        je .cartasbaixo
+
+        jmp .loopc
+
+    .cartasbaixo:
+        call .carta0
+        call .carta1
+        call .carta2
+        call .carta3
+        call .carta4
+        call .carta5
+        call .carta6
+        call .carta7
+        call .carta8
+        call .carta9
+        ret
+
+    .carta1:
+        mov cx, 20
+        mov dx, 180
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta2:
+        mov cx, 120
+        mov dx, 180
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta3:
+        mov cx, 220
+        mov dx, 180
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta4:
+        mov cx, 320
+        mov dx, 180
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta5:
+        mov cx, 420
+        mov dx, 180
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta6:
+        mov cx, 20
+        mov dx, 280
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta7:
+        mov cx, 120
+        mov dx, 280
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta8:
+        mov cx, 220
+        mov dx, 280
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta9:
+        mov cx, 320
+        mov dx, 280
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+    .carta0:
+        mov cx, 420
+        mov dx, 280
+        mov si, icon_gal
+        call _img16x16
+        ret
+
+
+    .carta1V:
+        mov cx, 20
+        mov dx, 180
+        mov si, relogio
+        call _img16x16
+        ret
+
+    .carta2V:
+        mov cx, 120
+        mov dx, 180
+        mov si, relogio
+        call _img16x16
+        ret
+
+    .carta3V:
+        mov cx, 220
+        mov dx, 180
+        mov si, img0
+        call _img16x16
+        ret
+
+    .carta4V:
+        mov cx, 320
+        mov dx, 180
+        mov si, img0
+        call _img16x16
+        ret
+
+    .carta5V:
+        mov cx, 420
+        mov dx, 180
+        mov si, img1
+        call _img16x16
+        ret
+
+    .carta6V:
+        mov cx, 20
+        mov dx, 280
+        mov si, img1
+        call _img16x16
+        ret
+
+    .carta7V:
+        mov cx, 120
+        mov dx, 280
+        mov si, img2
+        call _img16x16
+        ret
+
+    .carta8V:
+        mov cx, 220
+        mov dx, 280
+        mov si, img2
+        call _img16x16
+        ret
+
+    .carta9V:
+        mov cx, 320
+        mov dx, 280
+        mov si, img3
+        call _img16x16
+        ret
+
+    .carta0V:
+        mov cx, 420
+        mov dx, 280
+        mov si, img3
+        call _img16x16
+        ret    
+
+    jmp _cartas
