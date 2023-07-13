@@ -77,14 +77,14 @@ _cartas:
     .carta2:
         mov cx, 270
         mov dx, 120
-        mov si, card2
+        mov si, card
         call _img16x16
         ret
 
     .carta3:
         mov cx, 370
         mov dx, 120
-        mov si, card3
+        mov si, card
         call _img16x16
         ret
 
