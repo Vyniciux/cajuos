@@ -3,18 +3,12 @@ _game:
         call _setvideo
         mov bl, 11
         call _setbackg
+        call _cartas.cartasbaixo
         call _cartas
     
 
-
 _cartas:
-
-    call .cartasbaixo
-
-    call .loopc
-
-    .loopc
-
+        mov al, 00
         call _getc
 
         cmp al, 48
@@ -50,10 +44,10 @@ _cartas:
         cmp al, 99
         je .cartasbaixo
 
-        jmp .loopc
+        cmp al, 115
+        je _mount
 
     .cartasbaixo:
-        call .carta0
         call .carta1
         call .carta2
         call .carta3
@@ -63,147 +57,149 @@ _cartas:
         call .carta7
         call .carta8
         call .carta9
-        ret
+        call .carta0
+        jmp _cartas
 
     .carta1:
-        mov cx, 20
-        mov dx, 180
+        mov cx, 70
+        mov dx, 120
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta2:
-        mov cx, 120
-        mov dx, 180
+        mov cx, 170
+        mov dx, 120
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta3:
-        mov cx, 220
-        mov dx, 180
+        mov cx, 270
+        mov dx, 120
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta4:
-        mov cx, 320
-        mov dx, 180
+        mov cx, 370
+        mov dx, 120
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta5:
-        mov cx, 420
-        mov dx, 180
+        mov cx, 470
+        mov dx, 120
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta6:
-        mov cx, 20
-        mov dx, 280
+        mov cx, 70
+        mov dx, 220
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta7:
-        mov cx, 120
-        mov dx, 280
+        mov cx, 170
+        mov dx, 220
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta8:
-        mov cx, 220
-        mov dx, 280
+        mov cx, 270
+        mov dx, 220
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta9:
-        mov cx, 320
-        mov dx, 280
+        mov cx, 370
+        mov dx, 220
         mov si, icon_gal
         call _img16x16
         ret
 
     .carta0:
-        mov cx, 420
-        mov dx, 280
+        mov cx, 470
+        mov dx, 220
         mov si, icon_gal
         call _img16x16
         ret
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     .carta1V:
-        mov cx, 20
-        mov dx, 180
+        mov cx, 70
+        mov dx, 120
         mov si, relogio
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta2V:
-        mov cx, 120
-        mov dx, 180
+        mov cx, 170
+        mov dx, 120
         mov si, relogio
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta3V:
-        mov cx, 220
-        mov dx, 180
+        mov cx, 270
+        mov dx, 120
         mov si, img0
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta4V:
-        mov cx, 320
-        mov dx, 180
+        mov cx, 370
+        mov dx, 120
         mov si, img0
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta5V:
-        mov cx, 420
-        mov dx, 180
+        mov cx, 470
+        mov dx, 120
         mov si, img1
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta6V:
-        mov cx, 20
-        mov dx, 280
+        mov cx, 70
+        mov dx, 220
         mov si, img1
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta7V:
-        mov cx, 120
-        mov dx, 280
+        mov cx, 170
+        mov dx, 220
         mov si, img2
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta8V:
-        mov cx, 220
-        mov dx, 280
+        mov cx, 270
+        mov dx, 220
         mov si, img2
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta9V:
-        mov cx, 320
-        mov dx, 280
+        mov cx, 370
+        mov dx, 220
         mov si, img3
         call _img16x16
-        ret
+        jmp _cartas
 
     .carta0V:
-        mov cx, 420
-        mov dx, 280
+        mov cx, 470
+        mov dx, 220
         mov si, img3
         call _img16x16
-        ret    
+        jmp _cartas    
 
-    jmp _cartas
+    ret
