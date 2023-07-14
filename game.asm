@@ -6,8 +6,8 @@ _game:
         call _cartas.cartasbaixo
         call _cartas
     
-
 _cartas:
+
         mov al, 00
         call _getc
 
@@ -70,7 +70,7 @@ _cartas:
     .carta1:
         mov cx, 170
         mov dx, 120
-        mov si, card1
+        mov si, card
         call _img16x16
         ret
 
@@ -137,34 +137,44 @@ _cartas:
         mov dx, 120
         mov si, relogio
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta1V:
         mov cx, 170
         mov dx, 120
-        mov si, relogio
+        mov si, img0
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta2V:
         mov cx, 270
         mov dx, 120
-        mov si, img0
+        mov si, relogio
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta3V:
         mov cx, 370
         mov dx, 120
-        mov si, img0
+        mov si, img1
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta4V:
         mov cx, 470
         mov dx, 120
-        mov si, img1
+        mov si, img2
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta5V:
@@ -172,34 +182,48 @@ _cartas:
         mov dx, 220
         mov si, img1
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta6V:
         mov cx, 170
         mov dx, 220
-        mov si, img2
+        mov si, img0
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta7V:
         mov cx, 270
         mov dx, 220
-        mov si, img2
+        mov si, img4
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta8V:
         mov cx, 370
         mov dx, 220
-        mov si, img3
+        mov si, img2
         call _img16x16
+        mov ah, 0
+        push ax
         jmp _cartas
 
     .carta9V:
         mov cx, 470
         mov dx, 220
-        mov si, img3
+        mov si, img4
         call _img16x16
-        jmp _cartas    
+        mov ah, 0
+        push ax
+        jmp _cartas
 
-    ret
+ret
+
+
+
+
