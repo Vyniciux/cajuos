@@ -68,7 +68,7 @@ start:
         xor bx,bx		;Zerando o offset
 
         mov ah, 0x02 ;le o setor do disco
-        mov al, 20  ;porção de setores ocupados pelo kernel.asm
+        mov al, 60  ;porção de setores ocupados pelo kernel.asm
         mov ch, 0   ;track 0
         mov cl, 3   ;setor 3
         mov dh, 0   ;head 0

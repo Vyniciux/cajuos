@@ -10,6 +10,39 @@ _setbackg:
     int 10h
 
     ret
+    
+_printblock0:
+
+    mov ah, 0ch  
+
+    mov bl,0 ;conta x
+    mov di,0 ;conta y
+
+    .loop:
+
+        
+        int 10h
+        inc cx
+        inc bl
+        
+
+        cmp bl,5
+        jne .loop
+
+        inc dx
+        inc di
+
+        cmp di,5
+        je .fim
+
+        sub cx, 5
+        mov bl,0
+
+        jmp .loop
+
+    .fim:
+        ret
+
 
 _printblock:
 
@@ -45,6 +78,35 @@ _printblock:
     .fim:
         ret
 
+_img4x4:      
+
+    xor bx,bx
+
+    .loop:
+
+        push bx
+
+        call _printblock0
+
+        sub dx,5
+
+        pop bx
+        inc bh
+        cmp bh,4
+        jne .loop
+
+        add dx,5
+        sub cx,20
+
+        sub bh,4
+        inc bl
+
+        cmp bl,4
+        jne .loop
+
+        ret
+
+
 _img16x16:      
 
     xor bx,bx
@@ -72,6 +134,7 @@ _img16x16:
         jne .loop
 
         ret
+        
 
 _img30x30:      
 

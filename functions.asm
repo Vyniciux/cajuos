@@ -11,6 +11,12 @@ _callapp:
     je _gallery
 
     cmp al, 50
+    je _notas
+
+    cmp al, 51
+    je _configuracoes
+
+    cmp al, 52
     je _game
 
 
@@ -39,6 +45,27 @@ _apps:
 
     ret
 
+_print_string:
+
+    lodsb
+    cmp al,0
+    je .fim
+
+    mov ah, 0eh
+	int 10h
+
+    jmp _print_string
+
+    .fim:
+        ret
+
+_putc:
+
+        mov ah,0eh
+        mov bh,0
+        int 10h
+
+        ret
 
 
 
