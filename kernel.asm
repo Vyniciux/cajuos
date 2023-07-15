@@ -6,7 +6,9 @@ jmp 0x0000:start
 %include "functions.asm"
 %include "workspace.asm"
 %include "game.asm"
+%include "notas.asm"
 %include "gallery.asm"
+%include "config.asm"
 
 data:
 	
@@ -19,6 +21,7 @@ start:
     call _mount
 
     call _getc
+
     
     
 

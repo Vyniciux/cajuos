@@ -9,7 +9,7 @@ boot2_size = 1
 #kernel
 kernel_file = kernel
 kernel_pos = 2
-kernel_size = 20
+kernel_size = 60
 
 boot_disk = disk.img
 block_size = 512

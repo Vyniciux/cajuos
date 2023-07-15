@@ -30,7 +30,7 @@ _gallery:
 
         call _getc
 
-        cmp al,115
+        cmp al,27
         je .exit
 
         cmp al,43
@@ -152,7 +152,7 @@ _gallery:
 
 
 
-        
+
 
 
 
