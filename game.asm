@@ -5,10 +5,79 @@ _game:
         call _setbackg
         call _cartas.cartasbaixo
         call _cartas
+
+_carta0:
+        mov cx, 70
+        mov dx, 120
+        mov si, card
+        call _img16x16
+        ret
+
+_carta1:
+        mov cx, 170
+        mov dx, 120
+        mov si, card1
+        call _img16x16
+        ret
+
+_carta2:
+        mov cx, 270
+        mov dx, 120
+        mov si, card2
+        call _img16x16
+        ret
+
+_carta3:
+        mov cx, 370
+        mov dx, 120
+        mov si, card3
+        call _img16x16
+        ret
+
+_carta4:
+        mov cx, 470
+        mov dx, 120
+        mov si, card4
+        call _img16x16
+        ret
+
+_carta5:
+        mov cx, 70
+        mov dx, 220
+        mov si, card5
+        call _img16x16
+        ret
+
+_carta6:
+        mov cx, 170
+        mov dx, 220
+        mov si, card6
+        call _img16x16
+        ret
+
+_carta7:
+        mov cx, 270
+        mov dx, 220
+        mov si, card7
+        call _img16x16
+        ret
+
+_carta8:
+        mov cx, 370
+        mov dx, 220
+        mov si, card8
+        call _img16x16
+        ret
+
+_carta9:
+        mov cx, 470
+        mov dx, 220
+        mov si, card9
+        call _img16x16
+        ret
     
 _cartas:
 
-    mov al, 00
     call _getc
 
     cmp al, 48
@@ -41,93 +110,20 @@ _cartas:
     cmp al, 57
     je .carta9V
 
-    cmp al, 99
-    je .cartasbaixo
-
-    cmp al, 115
+    cmp al, 27
     je _mount
 
     .cartasbaixo:
-        call .carta0
-        call .carta1
-        call .carta2
-        call .carta3
-        call .carta4
-        call .carta5
-        call .carta6
-        call .carta7
-        call .carta8
-        call .carta9
-        ret
-
-    .carta0:
-        mov cx, 70
-        mov dx, 120
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta1:
-        mov cx, 170
-        mov dx, 120
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta2:
-        mov cx, 270
-        mov dx, 120
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta3:
-        mov cx, 370
-        mov dx, 120
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta4:
-        mov cx, 470
-        mov dx, 120
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta5:
-        mov cx, 70
-        mov dx, 220
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta6:
-        mov cx, 170
-        mov dx, 220
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta7:
-        mov cx, 270
-        mov dx, 220
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta8:
-        mov cx, 370
-        mov dx, 220
-        mov si, card
-        call _img16x16
-        ret
-
-    .carta9:
-        mov cx, 470
-        mov dx, 220
-        mov si, card
-        call _img16x16
+        call _carta0
+        call _carta1
+        call _carta2
+        call _carta3
+        call _carta4
+        call _carta5
+        call _carta6
+        call _carta7
+        call _carta8
+        call _carta9
         ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -137,76 +133,1191 @@ _cartas:
         mov dx, 120
         mov si, relogio
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu0
 
     .carta1V:
         mov cx, 170
         mov dx, 120
         mov si, img0
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu1
 
     .carta2V:
         mov cx, 270
         mov dx, 120
         mov si, relogio
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu2
 
     .carta3V:
         mov cx, 370
         mov dx, 120
         mov si, img1
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu3
 
     .carta4V:
         mov cx, 470
         mov dx, 120
         mov si, img2
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu4
 
     .carta5V:
         mov cx, 70
         mov dx, 220
         mov si, img1
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu5
 
     .carta6V:
         mov cx, 170
         mov dx, 220
         mov si, img0
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu6
 
     .carta7V:
         mov cx, 270
         mov dx, 220
         mov si, img4
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu7
 
     .carta8V:
         mov cx, 370
         mov dx, 220
         mov si, img2
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu8
 
     .carta9V:
         mov cx, 470
         mov dx, 220
         mov si, img4
         call _img16x16
-        jmp _cartas2
+        jmp _escolheu9
 
     jmp _cartas
 
-_cartas2:
+_escolheu0:
 
-    mov al, 00
+    call _getc
+
+    cmp al, 48
+    je _cartas
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta3
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta0
+        call _carta9
+        jmp _cartas
+
+_escolheu1:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je _cartas
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta0
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta3
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta1
+        call _carta9
+        jmp _cartas
+
+_escolheu2:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je _cartas
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta1
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta3
+        jmp _cartas    
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta2
+        call _carta9
+        jmp _cartas
+
+_escolheu3:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je _cartas
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta2
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta3
+        call _carta9
+        jmp _cartas
+
+_escolheu4:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je _cartas
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta3
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta4
+        call _carta9
+        jmp _cartas
+
+_escolheu5:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je _cartas
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta4
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta5
+        call _carta9
+        jmp _cartas
+
+_escolheu6:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je _cartas
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta3
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta5
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta7
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta6
+        call _carta9
+        jmp _cartas
+
+_escolheu7:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je _cartas
+
+    cmp al, 56
+    je .carta8P
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta3
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta4
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta6
+        jmp _cartas
+
+    .carta8P:
+        mov cx, 370
+        mov dx, 220
+        mov si, img2
+        call _img16x16
+        call _loop10
+        call _carta7
+        call _carta8
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        jmp _cartas
+
+_escolheu8:
+
+    call _getc
+
+    cmp al, 48
+    je .carta0P
+
+    cmp al, 49
+    je .carta1P
+
+    cmp al, 50
+    je .carta2P
+
+    cmp al, 51
+    je .carta3P
+
+    cmp al, 52
+    je .carta4P
+
+    cmp al, 53
+    je .carta5P
+
+    cmp al, 54
+    je .carta6P
+
+    cmp al, 55
+    je .carta7P
+
+    cmp al, 56
+    je _cartas
+
+    cmp al, 57
+    je .carta9P
+
+    cmp al, 27
+    je _mount
+
+    .carta0P:
+        mov cx, 70
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta0
+        jmp _cartas
+    
+    .carta1P:
+        mov cx, 170
+        mov dx, 120
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta1
+        jmp _cartas
+
+    .carta2P:
+        mov cx, 270
+        mov dx, 120
+        mov si, relogio
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta2
+        jmp _cartas
+
+    .carta3P:
+        mov cx, 370
+        mov dx, 120
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta3
+        jmp _cartas
+
+    .carta4P:
+        mov cx, 470
+        mov dx, 120
+        mov si, img2
+        call _img16x16
+        jmp _cartas
+
+    .carta5P:
+        mov cx, 70
+        mov dx, 220
+        mov si, img1
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta5
+        jmp _cartas
+
+    .carta6P:
+        mov cx, 170
+        mov dx, 220
+        mov si, img0
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta6
+        jmp _cartas
+
+    .carta7P:
+        mov cx, 270
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta7
+        jmp _cartas
+
+    .carta9P:
+        mov cx, 470
+        mov dx, 220
+        mov si, img4
+        call _img16x16
+        call _loop10
+        call _carta8
+        call _carta9
+        jmp _cartas
+
+_escolheu9:
+
     call _getc
 
     cmp al, 48
@@ -237,75 +1348,102 @@ _cartas2:
     je .carta8P
 
     cmp al, 57
-    je .carta9P
+    je _cartas
+
+    cmp al, 27
+    je _mount
 
     .carta0P:
         mov cx, 70
         mov dx, 120
-        mov si, card
+        mov si, relogio
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta0
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
-        mov si, card
+        mov si, img0
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta1
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
-        mov si, card
+        mov si, relogio
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta2
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
-        mov si, card
+        mov si, img1
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta3
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
-        mov si, card
+        mov si, img2
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta4
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
-        mov si, card
+        mov si, img1
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta5
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
-        mov si, card
+        mov si, img0
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta6
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
-        mov si, card
+        mov si, img4
         call _img16x16
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
-        mov si, card
+        mov si, img2
         call _img16x16
+        call _loop10
+        call _carta9
+        call _carta8
         jmp _cartas
 
-    .carta9P:
-        mov cx, 470
-        mov dx, 220
-        mov si, card
-        call _img16x16
-        jmp _cartas
+_loop10:
 
+    mov cx, 0fh
+    mov dx, 4240h
+    mov ah, 86h
+    int 15h
+ret

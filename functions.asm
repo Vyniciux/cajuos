@@ -43,6 +43,11 @@ _apps:
     mov si, iconconfig
     call _img16x16
 
+    mov cx, 320
+    mov dx, 280
+    mov si, icongame
+    call _img16x16
+
     ret
 
 _print_string:
