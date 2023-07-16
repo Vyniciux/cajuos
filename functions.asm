@@ -19,6 +19,9 @@ _callapp:
     cmp al, 52
     je _game
 
+    cmp al, 53
+    je _calculator
+
 
     jmp _callapp
 
@@ -46,6 +49,11 @@ _apps:
     mov cx, 320
     mov dx, 280
     mov si, icongame
+    call _img16x16
+
+    mov cx, 420
+    mov dx, 280
+    mov si, iconcalc
     call _img16x16
 
     ret
