@@ -139,7 +139,7 @@ _calculator:
             call _printc
             mov al, ' '
             call _printc
-            mov al, '1'
+            mov al, '9'
             call _printc
 
             call _quebradelinha
@@ -198,7 +198,7 @@ _calculator:
             call _printc
             mov al, ' '
             call _printc
-            mov al, '1'
+            mov al, '9'
             call _printc
 
             call _quebradelinha
