@@ -22,6 +22,9 @@ _callapp:
     cmp al, 53
     je _calculator
 
+    cmp al,54
+    je _info
+
 
     jmp _callapp
 

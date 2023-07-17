@@ -91,6 +91,11 @@ _calculator:
 
         .caractererrado:
 
+            call _setvideo
+    
+            mov bl, 7
+            call _setbackg
+
             mov al, 'D'
             call _printc
             mov al, 'i'

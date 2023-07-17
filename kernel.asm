@@ -10,6 +10,7 @@ jmp 0x0000:start
 %include "gallery.asm"
 %include "config.asm"
 %include "calculator.asm"
+%include "info.asm"
 
 data:
 	

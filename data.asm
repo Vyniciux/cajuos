@@ -65,3 +65,5 @@ textconfig3 db 10,13,"  Pressione 'c' para mudar o papel de parede",0
 textconfig2 db 10,13,"  Pressione + ou -  para navegar entre as configuracoes",0
 
 statusconfig db 0
+
+infotext1 db 10,13,10,13,10,13,"                                  Informacoes",10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,10,13,"  O CajuOs e um trabalho open source desenvolvido por, Bruna Veiga,",10,13,"  Giovanna de Cassia, Leandro Vynicius e Thyago Soares, a proposta e um sistema",10,13,"  low resources. ",10,13,10,13,10,13,10,13,"  Ajuda: Pra abrir os aplicativos basta digitar o numero do app (numero",10,13,"  indicado pela ordem que aparecem na area de trabalho), para fechar apps tecle",10,13,"  ESC, se divirta.",0
