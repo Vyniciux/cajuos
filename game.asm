@@ -99,6 +99,10 @@ _carta9:
 
 _winMsg:
 
+    mov si, msgfinal
+    call _print_string
+    call _getc 
+    call _mount
     
 ret
     

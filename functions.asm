@@ -34,29 +34,34 @@ _apps:
     mov si, relogio
     call _img16x16
 
-    mov cx, 20
-    mov dx, 280
+    mov cx, 30
+    mov dx, 380
     mov si, icon_gal
     call _img16x16
 
-    mov cx, 120
-    mov dx, 280
+    mov cx, 130
+    mov dx, 380
     mov si, iconnotes
     call _img16x16
 
-    mov cx, 220
-    mov dx, 280
+    mov cx, 230
+    mov dx, 380
     mov si, iconconfig
     call _img16x16
 
-    mov cx, 320
-    mov dx, 280
+    mov cx, 330
+    mov dx, 380
     mov si, icongame
     call _img16x16
 
-    mov cx, 420
-    mov dx, 280
+    mov cx, 430
+    mov dx, 380
     mov si, iconcalc
+    call _img16x16
+
+    mov cx, 530
+    mov dx, 380
+    mov si, iconinfo
     call _img16x16
 
     ret

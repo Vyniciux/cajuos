@@ -9,7 +9,7 @@ _info:
     mov bl,15
     call _print_string
 
-    mov si,img5
+    mov si,img6
     mov cx,240
     mov dx,75
     call _img30x30
