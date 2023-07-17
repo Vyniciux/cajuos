@@ -113,6 +113,8 @@ _cartas:
     cmp al, 27
     je _mount
 
+    jmp _cartas
+
     .cartasbaixo:
         call _carta0
         call _carta1
@@ -236,6 +238,8 @@ _escolheu0:
 
     cmp al, 27
     je _mount
+
+    jmp _escolheu0
 
     .carta1P:
         mov cx, 170
@@ -361,6 +365,8 @@ _escolheu1:
     cmp al, 27
     je _mount
 
+    jmp _escolheu1
+
     .carta0P:
         mov cx, 70
         mov dx, 120
@@ -484,6 +490,8 @@ _escolheu2:
 
     cmp al, 27
     je _mount
+
+    jmp _escolheu2
 
     .carta0P:
         mov cx, 70
@@ -609,6 +617,8 @@ _escolheu3:
     cmp al, 27
     je _mount
 
+    jmp _escolheu3
+
     .carta0P:
         mov cx, 70
         mov dx, 120
@@ -732,6 +742,8 @@ _escolheu4:
 
     cmp al, 27
     je _mount
+
+    jmp _escolheu4
 
     .carta0P:
         mov cx, 70
@@ -857,6 +869,8 @@ _escolheu5:
     cmp al, 27
     je _mount
 
+    jmp _escolheu5
+
     .carta0P:
         mov cx, 70
         mov dx, 120
@@ -980,6 +994,8 @@ _escolheu6:
 
     cmp al, 27
     je _mount
+
+    jmp _escolheu6
 
     .carta0P:
         mov cx, 70
@@ -1105,6 +1121,8 @@ _escolheu7:
     cmp al, 27
     je _mount
 
+    jmp _escolheu7
+
     .carta0P:
         mov cx, 70
         mov dx, 120
@@ -1229,6 +1247,8 @@ _escolheu8:
     cmp al, 27
     je _mount
 
+    jmp _escolheu8
+
     .carta0P:
         mov cx, 70
         mov dx, 120
@@ -1352,6 +1372,8 @@ _escolheu9:
 
     cmp al, 27
     je _mount
+
+    jmp _escolheu9
 
     .carta0P:
         mov cx, 70
