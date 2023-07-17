@@ -1,82 +1,111 @@
 _game:
-
         call _setvideo
         mov bl, 11
         call _setbackg
+        xor bx, bx
+        mov bx, 0
         call _cartas.cartasbaixo
         call _cartas
 
-_carta0:
+_carta0: ;cada uma dessas 10 funções faz com que a respectiva carta fique fechada
         mov cx, 70
         mov dx, 120
         mov si, card
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta1:
         mov cx, 170
         mov dx, 120
         mov si, card1
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta2:
         mov cx, 270
         mov dx, 120
         mov si, card2
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta3:
         mov cx, 370
         mov dx, 120
         mov si, card3
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta4:
         mov cx, 470
         mov dx, 120
         mov si, card4
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta5:
         mov cx, 70
         mov dx, 220
         mov si, card5
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta6:
         mov cx, 170
         mov dx, 220
         mov si, card6
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta7:
         mov cx, 270
         mov dx, 220
         mov si, card7
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta8:
         mov cx, 370
         mov dx, 220
         mov si, card8
+        push bx
         call _img16x16
+        pop bx
         ret
 
 _carta9:
         mov cx, 470
         mov dx, 220
         mov si, card9
+        push bx
         call _img16x16
+        pop bx
         ret
+
+_winMsg:
+
     
-_cartas:
+ret
+    
+_cartas: ;principal função do jogo
+
+    cmp bx, 5
+    je _winMsg
 
     call _getc
 
@@ -110,10 +139,10 @@ _cartas:
     cmp al, 57
     je .carta9V
 
-    cmp al, 27
+    cmp al, 27 ;se esc for pressionado volta para área de trabalho
     je _mount
 
-    jmp _cartas
+    jmp _cartas ;se nenhuma das teclas que têm utilidade no jogo foram pressionadas, ele volta para o início dessa função
 
     .cartasbaixo:
         call _carta0
@@ -128,81 +157,100 @@ _cartas:
         call _carta9
         ret
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    .carta0V:
+    .carta0V: ;cada uma dessas 10 funções abre a respectiva carta e pula para a função "escolheu"
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu0
 
     .carta1V:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu1
 
     .carta2V:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu2
 
     .carta3V:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu3
 
     .carta4V:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu4
 
     .carta5V:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu5
 
     .carta6V:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu6
 
     .carta7V:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu7
 
     .carta8V:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu8
 
     .carta9V:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
+        pop bx
         jmp _escolheu9
 
     jmp _cartas
 
-_escolheu0:
+_escolheu0: ;pega o segundo caracter da jogada, se for o par certo, as cartas ficam abertas, se não, ambas se fecham 
 
     call _getc
 
@@ -245,87 +293,106 @@ _escolheu0:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta0
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu1:
@@ -371,87 +438,106 @@ _escolheu1:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta0
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta1
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu2:
@@ -497,87 +583,106 @@ _escolheu2:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta3
+        pop bx
         jmp _cartas    
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta2
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu3:
@@ -623,87 +728,107 @@ _escolheu3:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta6
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta3
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu4:
@@ -749,87 +874,106 @@ _escolheu4:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta4
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu5:
@@ -875,87 +1019,106 @@ _escolheu5:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta5
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu6:
@@ -1001,87 +1164,106 @@ _escolheu6:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta6
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu7:
@@ -1127,87 +1309,106 @@ _escolheu7:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta7
         call _carta8
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
 _escolheu8:
@@ -1253,87 +1454,106 @@ _escolheu8:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta7
+        pop bx
         jmp _cartas
 
     .carta9P:
         mov cx, 470
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
         call _loop10
         call _carta8
         call _carta9
+        pop bx
         jmp _cartas
 
 _escolheu9:
@@ -1379,90 +1599,109 @@ _escolheu9:
         mov cx, 70
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta0
+        pop bx
         jmp _cartas
     
     .carta1P:
         mov cx, 170
         mov dx, 120
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta1
+        pop bx
         jmp _cartas
 
     .carta2P:
         mov cx, 270
         mov dx, 120
         mov si, relogio
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta2
+        pop bx
         jmp _cartas
 
     .carta3P:
         mov cx, 370
         mov dx, 120
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta3
+        pop bx
         jmp _cartas
 
     .carta4P:
         mov cx, 470
         mov dx, 120
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta4
+        pop bx
         jmp _cartas
 
     .carta5P:
         mov cx, 70
         mov dx, 220
         mov si, img1
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta5
+        pop bx
         jmp _cartas
 
     .carta6P:
         mov cx, 170
         mov dx, 220
         mov si, img0
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta6
+        pop bx
         jmp _cartas
 
     .carta7P:
         mov cx, 270
         mov dx, 220
         mov si, img4
+        push bx
         call _img16x16
+        pop bx
+        inc bx
         jmp _cartas
 
     .carta8P:
         mov cx, 370
         mov dx, 220
         mov si, img2
+        push bx
         call _img16x16
         call _loop10
         call _carta9
         call _carta8
+        pop bx
         jmp _cartas
 
-_loop10:
+_loop10: ;função para Delay de 1s
 
     mov cx, 0fh
     mov dx, 4240h
