@@ -38,7 +38,7 @@ _configuracoes:
         mov al,[statusconfig]
         dec al
         mov [statusconfig],al
-        jmp .reload
+        jmp .reload\
     
 
     .status0:

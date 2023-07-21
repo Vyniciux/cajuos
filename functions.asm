@@ -17,7 +17,7 @@ _callapp:
     je _configuracoes
 
     cmp al, 52
-    je _game
+    je _pre_game
 
     cmp al, 53
     je _calculator

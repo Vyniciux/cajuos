@@ -11,6 +11,7 @@ jmp 0x0000:start
 %include "config.asm"
 %include "calculator.asm"
 %include "info.asm"
+%include "pre_game.asm"
 
 data:
 	

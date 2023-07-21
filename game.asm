@@ -97,19 +97,13 @@ _carta9:
         pop bx
         ret
 
-_winMsg:
-
-    mov si, msgfinal
-    call _print_string
-    call _getc 
-    call _mount
     
 ret
     
 _cartas: ;principal função do jogo
 
     cmp bx, 5
-    je _winMsg
+    je _win_game
 
     call _getc
 
