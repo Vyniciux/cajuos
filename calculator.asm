@@ -91,8 +91,8 @@ _calculator:
 
         .caractererrado:
 
-            call _setvideo
-    
+            call _quebradelinha
+
             mov bl, 7
             call _setbackg
 
