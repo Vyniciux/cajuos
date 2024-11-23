@@ -24,13 +24,13 @@ create_disk:
 	@dd if=/dev/zero of=$(boot_disk) bs=$(block_size) count=$(disk_size) status=noxfer
 
 boot1_only:
-	@nasm $(nasm_flags) $(boot1_file).asm -o $(boot1_file).bin
+	@nasm $(nasm_flags) src/$(boot1_file).asm -o $(boot1_file).bin
 
 boot2_only:
-	@nasm $(nasm_flags) $(boot2_file).asm -o $(boot2_file).bin
+	@nasm $(nasm_flags) src/$(boot2_file).asm -o $(boot2_file).bin
 
 kernel_only:
-	@nasm $(nasm_flags) $(kernel_file).asm -o $(kernel_file).bin
+	@nasm $(nasm_flags) src/$(kernel_file).asm -o $(kernel_file).bin
 
 write_boot1:
 	@dd if=$(boot1_file).bin of=$(boot_disk) bs=$(block_size) count=1 conv=notrunc status=noxfer
